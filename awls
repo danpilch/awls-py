@@ -49,7 +49,7 @@ class AWSInventoryTable(object):
                     headers = ["fqdn", "private_ip", "public_ip"]
 
         # Return pretty data
-        print tabulate(tbl_list, headers=headers, tablefmt="psql")
+        print(tabulate(tbl_list, headers=headers, tablefmt="psql"))
 
 
 def main():
