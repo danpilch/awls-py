@@ -27,7 +27,7 @@ optional arguments:
 
 ```
 # Search for a specific query
-./awls search_term -r AWS_PROFILE -r eu-central-1
+./awls search_term -p AWS_PROFILE -r eu-central-1
 
 # Output
 +-----------------------------------------------------------+--------------+--------------+

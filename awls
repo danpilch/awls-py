@@ -29,14 +29,14 @@ class AWSInventoryTable(object):
                                 aws_private_ip = instance.private_ip_address
                                 aws_public_ip = instance.public_ip_address
                                 found = True
-                            else: 
+                            else:
                                 found = False
                         else:
                             aws_name = tag['Value']
                             aws_private_ip = instance.private_ip_address
                             aws_public_ip = instance.public_ip_address
                             found = True
-    
+
                     if tag['Key'] == "Maintenance":
                         aws_maintenance_tags = tag['Value']
 
@@ -44,16 +44,16 @@ class AWSInventoryTable(object):
                 if maintenance_tags:
                     tbl_list.append([aws_name, aws_private_ip, aws_public_ip, aws_maintenance_tags])
                     headers = ["fqdn", "private_ip", "public_ip", "maintenance_tags"]
-                else: 
+                else:
                     tbl_list.append([aws_name, aws_private_ip, aws_public_ip])
                     headers = ["fqdn", "private_ip", "public_ip"]
 
         # Return pretty data
-        print tabulate(tbl_list, headers=headers, tablefmt="psql")
+        print(tabulate(tbl_list, headers=headers, tablefmt="psql"))
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Interrogate AWS EC2 and return pretty data") 
+    parser = argparse.ArgumentParser(description="Interrogate AWS EC2 and return pretty data")
     parser.add_argument("--profile", "-p", help="Which AWS profile to use", default="")
     parser.add_argument("--region", "-r", help="Which AWS region to use", default="ap-southeast-2")
     parser.add_argument("--maintenance_tags", "-m", help="Output maintenance tags for instances", action="store_true", default=False)
